@@ -4,6 +4,8 @@ import { registerRootComponent } from 'expo';
 import { useFonts, Nunito_400Regular, Nunito_700Bold } from '@expo-google-fonts/nunito';
 import { HomeScreen } from './screens/Home';
 import { Theme } from './Theme';
+import { store } from './store';
+import { Provider } from 'react-redux';
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -19,16 +21,18 @@ const App = () => {
 
     return (
         <Theme>
-            <NavigationContainer>
-                <Navigator
-                    screenOptions={{
-                        animation: 'none',
-                        headerShown: false,
-                    }}
-                >
-                    <Screen name="Home" component={HomeScreen} />
-                </Navigator>
-            </NavigationContainer>
+            <Provider store={store}>
+                <NavigationContainer>
+                    <Navigator
+                        screenOptions={{
+                            animation: 'none',
+                            headerShown: false,
+                        }}
+                    >
+                        <Screen name="Home" component={HomeScreen} />
+                    </Navigator>
+                </NavigationContainer>
+            </Provider>
         </Theme>
     );
 };
