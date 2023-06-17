@@ -13,6 +13,7 @@ export const themeConstant = {
         snackColor: '#7ED6DF',
         waterFullColor: '#74B9FF',
         waterEmptyColor: '#D3D3D3',
+        goalColor: '#A29BFE',
     },
     fonts: {
         regular: 'Nunito_400Regular',

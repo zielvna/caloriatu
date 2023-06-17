@@ -4,6 +4,7 @@ import { Header } from '../components/Header';
 import { DaySelector } from '../components/DaySelector';
 import { FoodSection } from '../components/FoodSection';
 import { WaterSection } from '../components/WaterSection';
+import { GoalSection } from '../components/GoalSection';
 
 const months = [
     'January',
@@ -32,6 +33,7 @@ export const HomeScreen = () => {
             <DaySelector />
             <FoodSection />
             <WaterSection />
+            <GoalSection />
         </View>
     );
 };
