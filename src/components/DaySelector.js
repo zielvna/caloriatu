@@ -4,8 +4,9 @@ import styled from 'styled-components/native';
 import { useSelector, useDispatch } from 'react-redux';
 import { Day } from './Day';
 import { change } from '../slices/selectedDateSlice';
+import { Wrapper } from './Wrapper';
 
-const windowWidth = Dimensions.get('window').width;
+const windowWidth = Dimensions.get('window').width - 24;
 
 export const DaySelector = () => {
     const [rows, setRows] = useState([]);
@@ -40,20 +41,22 @@ export const DaySelector = () => {
     };
 
     return (
-        <DaySelectorContainer ref={daySelectorRef} horizontal disableIntervalMomentum snapToInterval={windowWidth}>
-            {rows.map((row, index) => (
-                <Week key={index}>
-                    {row.map((date, index) => (
-                        <Day
-                            key={index}
-                            date={date}
-                            selected={date.getTime() === new Date(selectedDate).getTime()}
-                            dayClick={(date) => dateClick(date)}
-                        />
-                    ))}
-                </Week>
-            ))}
-        </DaySelectorContainer>
+        <Wrapper>
+            <DaySelectorContainer ref={daySelectorRef} horizontal disableIntervalMomentum snapToInterval={windowWidth}>
+                {rows.map((row, index) => (
+                    <Week key={index}>
+                        {row.map((date, index) => (
+                            <Day
+                                key={index}
+                                date={date}
+                                selected={date.getTime() === new Date(selectedDate).getTime()}
+                                dayClick={(date) => dateClick(date)}
+                            />
+                        ))}
+                    </Week>
+                ))}
+            </DaySelectorContainer>
+        </Wrapper>
     );
 };
 
