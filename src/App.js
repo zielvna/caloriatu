@@ -1,11 +1,11 @@
+import { Nunito_400Regular, Nunito_700Bold, useFonts } from '@expo-google-fonts/nunito';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { registerRootComponent } from 'expo';
-import { useFonts, Nunito_400Regular, Nunito_700Bold } from '@expo-google-fonts/nunito';
-import { HomeScreen } from './screens/Home';
-import { Theme } from './Theme';
-import { store } from './store';
 import { Provider } from 'react-redux';
+import { Theme } from './Theme';
+import { HomeScreen } from './screens/Home';
+import { store } from './store';
 
 const { Navigator, Screen } = createNativeStackNavigator();
 

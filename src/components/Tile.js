@@ -18,14 +18,11 @@ const Container = styled.View`
     padding: 12px;
     border-radius: 12px;
     margin: 0 0 12px 0;
-    flex: 1;
-    flex-basis: auto;
     ${(props) => props.isHorizontal && 'align-items: center;'}
+    justify-content: space-between;
 `;
 
 const LeftSide = styled.View`
-    flex: 1;
-    flex-basis: auto;
     ${(props) => !props.isHorizontal && 'margin: 0 0 12px 0'};
 `;
 

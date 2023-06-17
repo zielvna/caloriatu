@@ -1,10 +1,9 @@
+import { useEffect, useRef, useState } from 'react';
 import { Dimensions } from 'react-native';
-import { useEffect, useState, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components/native';
-import { useSelector, useDispatch } from 'react-redux';
-import { Day } from './Day';
 import { change } from '../slices/selectedDateSlice';
-import { Wrapper } from './Wrapper';
+import { Day } from './Day';
 
 const windowWidth = Dimensions.get('window').width - 24;
 
@@ -27,7 +26,7 @@ export const DaySelector = () => {
             weeks[Math.floor(i / 7)].push(thisDay);
         }
 
-        setRows([...weeks]);
+        setRows(weeks);
         dispatch(change(date.getTime()));
 
         daySelectorRef.current?.scrollTo({
@@ -36,37 +35,30 @@ export const DaySelector = () => {
         });
     }, []);
 
-    const dateClick = (date) => {
-        dispatch(change(date.getTime()));
-    };
-
     return (
-        <Wrapper>
-            <DaySelectorContainer ref={daySelectorRef} horizontal disableIntervalMomentum snapToInterval={windowWidth}>
-                {rows.map((row, index) => (
-                    <Week key={index}>
-                        {row.map((date, index) => (
-                            <Day
-                                key={index}
-                                date={date}
-                                selected={date.getTime() === new Date(selectedDate).getTime()}
-                                dayClick={(date) => dateClick(date)}
-                            />
-                        ))}
-                    </Week>
-                ))}
-            </DaySelectorContainer>
-        </Wrapper>
+        <Container ref={daySelectorRef} horizontal disableIntervalMomentum snapToInterval={windowWidth}>
+            {rows.map((row, index) => (
+                <Week key={index}>
+                    {row.map((date, index) => (
+                        <Day
+                            key={index}
+                            date={date}
+                            selected={date.getTime() === new Date(selectedDate).getTime()}
+                            onPress={() => dispatch(change(date.getTime()))}
+                        />
+                    ))}
+                </Week>
+            ))}
+        </Container>
     );
 };
 
-const DaySelectorContainer = styled.ScrollView`
+const Container = styled.ScrollView`
     background-color: ${(props) => props.theme.colors.backgroundColor};
     height: ${Math.floor(windowWidth / 7)}px;
 `;
 
 const Week = styled.View`
     width: ${windowWidth}px;
-    flex: 1;
     flex-direction: row;
 `;

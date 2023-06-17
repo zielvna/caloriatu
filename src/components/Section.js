@@ -14,8 +14,6 @@ export const Section = ({ title, stats, children }) => {
 
 const Header = styled.View`
     height: 40px;
-    flex: 1;
-    flex-basis: auto;
     flex-direction: row;
     align-items: center;
 `;

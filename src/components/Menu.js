@@ -1,17 +1,13 @@
-import { View, Text } from 'react-native';
 import styled from 'styled-components/native';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { MenuItem } from './MenuItem';
 
-export const Menu = () => {
-    return (
-        <Container>
-            <MenuItem content="menu" icon="restaurant" isActive />
-            <MenuItem content="food list" icon="menu-book" />
-            <MenuItem content="settings" icon="settings" />
-        </Container>
-    );
-};
+export const Menu = () => (
+    <Container>
+        <MenuItem icon="restaurant" description="menu" isActive />
+        <MenuItem icon="menu-book" description="food list" />
+        <MenuItem icon="settings" description="settings" />
+    </Container>
+);
 
 const Container = styled.View`
     background-color: ${(props) => props.theme.colors.contrastColor};

@@ -3,19 +3,19 @@ import styled from 'styled-components/native';
 
 const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-export const Day = ({ date, selected, dayClick }) => {
+export const Day = ({ date, selected, onPress }) => {
     return (
-        <TouchableWithoutFeedback onPress={() => dayClick(date)}>
-            <DayContainer selected={selected}>
+        <TouchableWithoutFeedback onPress={onPress}>
+            <Container selected={selected}>
                 <Monthday selected={selected}>{new Date(date).getDate()}</Monthday>
                 <Weekday selected={selected}>{weekdays[new Date(date).getDay()]}</Weekday>
-            </DayContainer>
+            </Container>
         </TouchableWithoutFeedback>
     );
 };
 
-const DayContainer = styled.View`
-    ${(props) => props.selected && 'background: ' + props.theme.colors.primaryColor};
+const Container = styled.View`
+    ${(props) => props.selected && `background: ${props.theme.colors.primaryColor}`};
     flex: 1;
     border-radius: 50px;
     justify-content: center;

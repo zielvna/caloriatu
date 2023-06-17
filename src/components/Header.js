@@ -1,12 +1,30 @@
-import { TouchableWithoutFeedback } from 'react-native';
-import { useNavigation, useNavigationState } from '@react-navigation/native';
-import styled from 'styled-components/native';
-import { StatusBar } from 'expo-status-bar';
-import Constants from 'expo-constants';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { useNavigation, useNavigationState } from '@react-navigation/native';
+import Constants from 'expo-constants';
+import { StatusBar } from 'expo-status-bar';
+import { TouchableWithoutFeedback } from 'react-native';
+import { useSelector } from 'react-redux';
+import styled from 'styled-components/native';
 import { themeConstant } from '../Theme';
+import { DaySelector } from './DaySelector';
 
-export const Header = ({ scheme = 'normal', title, buttonText, buttonClick, date }) => {
+const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+];
+
+export const Header = ({ scheme = 'normal', title, buttonText, buttonClick }) => {
+    const selectedDate = useSelector((state) => state.selectedDate.value);
     const navigation = useNavigation();
     const index = useNavigationState(({ index }) => index);
 
@@ -14,7 +32,7 @@ export const Header = ({ scheme = 'normal', title, buttonText, buttonClick, date
 
     if (scheme === 'normal') {
         content = (
-            <>
+            <Main scheme={scheme}>
                 <LeftSide>
                     {!!index && (
                         <MaterialIcons
@@ -33,11 +51,11 @@ export const Header = ({ scheme = 'normal', title, buttonText, buttonClick, date
                         <RightText>{buttonText}</RightText>
                     </TouchableWithoutFeedback>
                 </RightSide>
-            </>
+            </Main>
         );
     } else {
         content = (
-            <>
+            <Main scheme={scheme}>
                 <LogoFlex scheme={scheme}>
                     <Logo scheme={scheme}>caloriatu</Logo>
                     <MaterialIcons
@@ -50,34 +68,40 @@ export const Header = ({ scheme = 'normal', title, buttonText, buttonClick, date
                         size={28}
                     />
                 </LogoFlex>
-                {scheme === 'home' && <Month>{date}</Month>}
-            </>
+                {scheme === 'home' && (
+                    <Month>{`${months[new Date(selectedDate).getMonth()]} ${new Date(
+                        selectedDate
+                    ).getFullYear()}`}</Month>
+                )}
+            </Main>
         );
     }
 
     return (
-        <HeaderContainer scheme={scheme}>
+        <Container scheme={scheme}>
             <StatusBar
                 backgroundColor={
                     scheme === 'start' ? themeConstant.colors.primaryColor : themeConstant.colors.backgroundColor
                 }
             />
             {content}
-        </HeaderContainer>
+            {scheme === 'home' && <DaySelector />}
+        </Container>
     );
 };
 
-const HeaderContainer = styled.View`
+const Container = styled.View`
     background-color: ${(props) =>
         props.scheme === 'start' ? props.theme.colors.primaryColor : props.theme.colors.backgroundColor};
-    margin: ${Constants.statusBarHeight}px 0 0 0;
+    margin: ${Constants.statusBarHeight}px 0 6px 0;
     padding: ${(props) => (props.scheme === 'normal' ? '0 12px 0 0' : '0 12px')};
+`;
+
+const Main = styled.View`
     height: 60px;
-    flex: 1;
-    flex-basis: auto;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: ${(props) => (props.scheme === 'start' ? 'center' : 'space-between')};
 `;
 
 const LeftSide = styled.View`
@@ -88,40 +112,39 @@ const MiddleSide = styled.View`
     flex: 2;
 `;
 
-const MiddleText = styled.Text`
-    color: ${(props) => props.theme.colors.contrastColor};
-    font-family: ${(props) => props.theme.fonts.bold};
-    font-size: 16px;
-    text-align: center;
-`;
-
 const RightSide = styled.View`
     flex: 1;
 `;
 
+const MiddleText = styled.Text`
+    font-family: ${(props) => props.theme.fonts.bold};
+    color: ${(props) => props.theme.colors.contrastColor};
+    font-size: 16px;
+    text-align: center;
+`;
+
 const RightText = styled.Text`
-    color: ${(props) => props.theme.colors.primaryColor};
     font-family: ${(props) => props.theme.fonts.regular};
+    color: ${(props) => props.theme.colors.primaryColor};
     font-size: 16px;
     text-align: right;
 `;
 
 const Logo = styled.Text`
+    font-family: ${(props) => props.theme.fonts.bold};
     color: ${(props) =>
         props.scheme === 'start' ? props.theme.colors.backgroundColor : props.theme.colors.contrastColor};
-    font-family: ${(props) => props.theme.fonts.bold};
     font-size: 24px;
     margin-right: 12px;
 `;
 
 const LogoFlex = styled.View`
-    flex: 1;
+    ${(props) => props.scheme === 'start' && 'justify-content: center;'}
     flex-direction: row;
     align-items: center;
-    ${(props) => props.scheme === 'start' && 'justify-content: center;'}
 `;
 
 const Month = styled.Text`
-    color: ${(props) => props.theme.colors.secondGray};
     font-family: ${(props) => props.theme.fonts.regular};
+    color: ${(props) => props.theme.colors.secondGray};
 `;

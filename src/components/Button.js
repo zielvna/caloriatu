@@ -1,21 +1,24 @@
+import { TouchableWithoutFeedback } from 'react-native';
 import { styled } from 'styled-components/native';
 
-export const Button = ({ children }) => {
+export const Button = ({ children, onPress }) => {
     return (
-        <Container>
-            <Content>{children}</Content>
-        </Container>
+        <TouchableWithoutFeedback onPress={onPress}>
+            <Container>
+                <Description>{children}</Description>
+            </Container>
+        </TouchableWithoutFeedback>
     );
 };
 
 const Container = styled.View`
     background-color: ${(props) => props.theme.colors.backgroundColor};
-    padding: 9px 18px;
+    padding: 8px 16px;
     border-radius: 12px;
     align-self: flex-start;
 `;
 
-const Content = styled.Text`
+const Description = styled.Text`
     font-family: ${(props) => props.theme.fonts.bold};
     color: ${(props) => props.theme.colors.contrastColor};
 `;
