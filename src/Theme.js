@@ -7,6 +7,12 @@ export const themeConstant = {
         contrastColor: '#3d3d3d',
         firstGray: '#f7f7f7',
         secondGray: '#979797',
+        breakfastColor: '#FF7979',
+        lunchColor: '#F6E58D',
+        dinnerColor: '#BADC58',
+        snackColor: '#7ED6DF',
+        waterFullColor: '#74B9FF',
+        waterEmptyColor: '#D3D3D3',
     },
     fonts: {
         regular: 'Nunito_400Regular',
