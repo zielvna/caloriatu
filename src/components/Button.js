@@ -15,7 +15,6 @@ const Container = styled.View`
     background-color: ${(props) => props.theme.colors.backgroundColor};
     padding: 8px 16px;
     border-radius: 12px;
-    align-self: flex-start;
 `;
 
 const Description = styled.Text`

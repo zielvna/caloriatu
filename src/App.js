@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { registerRootComponent } from 'expo';
 import { Provider } from 'react-redux';
 import { Theme } from './Theme';
+import { FoodListScreen } from './screens/FoodList';
 import { HomeScreen } from './screens/Home';
 import { store } from './store';
 
@@ -30,6 +31,7 @@ const App = () => {
                         }}
                     >
                         <Screen name="Home" component={HomeScreen} />
+                        <Screen name="FoodList" component={FoodListScreen} />
                     </Navigator>
                 </NavigationContainer>
             </Provider>

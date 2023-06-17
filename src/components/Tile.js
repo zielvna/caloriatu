@@ -15,10 +15,10 @@ export const Tile = ({ backgroundColor, colorScheme = 'light', title, descriptio
 const Container = styled.View`
     background-color: ${(props) => props.backgroundColor};
     flex-direction: ${(props) => (props.isHorizontal ? 'row' : 'column')};
+    ${(props) => props.isHorizontal && 'align-items: center;'}
     padding: 12px;
     border-radius: 12px;
     margin: 0 0 12px 0;
-    ${(props) => props.isHorizontal && 'align-items: center;'}
     justify-content: space-between;
 `;
 

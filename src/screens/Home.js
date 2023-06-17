@@ -14,6 +14,6 @@ export const HomeScreen = () => (
             <WaterSection />
             <GoalSection />
         </Body>
-        <Menu />
+        <Menu active="Home" />
     </Screen>
 );
