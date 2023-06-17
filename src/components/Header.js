@@ -57,8 +57,12 @@ export const Header = ({ scheme = 'normal', title, buttonText, buttonClick, date
 
     return (
         <HeaderContainer scheme={scheme}>
-            <StatusBar backgroundColor="#ffffff" />
-            <HeaderFlex scheme={scheme}>{content}</HeaderFlex>
+            <StatusBar
+                backgroundColor={
+                    scheme === 'start' ? themeConstant.colors.primaryColor : themeConstant.colors.backgroundColor
+                }
+            />
+            {content}
         </HeaderContainer>
     );
 };
@@ -67,15 +71,13 @@ const HeaderContainer = styled.View`
     background-color: ${(props) =>
         props.scheme === 'start' ? props.theme.colors.primaryColor : props.theme.colors.backgroundColor};
     margin: ${Constants.statusBarHeight}px 0 0 0;
+    padding: ${(props) => (props.scheme === 'normal' ? '0 12px 0 0' : '0 12px')};
     height: 60px;
-`;
-
-const HeaderFlex = styled.View`
     flex: 1;
+    flex-basis: auto;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin: ${(props) => (props.scheme === 'normal' ? '0 12px 0 0' : '0 12px')};
 `;
 
 const LeftSide = styled.View`
