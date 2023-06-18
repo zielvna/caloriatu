@@ -1,15 +1,16 @@
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { useNavigation } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
 import { styled } from 'styled-components/native';
 import { themeConstant } from '../Theme';
+import { remove } from '../slices/foodListSlice';
 import { Button } from './Button';
 import { Tile } from './Tile';
 
 export const FoodListSection = () => {
-    const foodListItems = [
-        { id: 1, name: 'Bread', energy: 350, portion: 20 },
-        { id: 2, name: 'Cheese', energy: 350, portion: 15 },
-        { id: 3, name: 'Ham', energy: 250, portion: 15 },
-    ];
+    const dispatch = useDispatch();
+    const navigation = useNavigation();
+    const foodListItems = useSelector((state) => state.foodList.value);
 
     return (
         <>
@@ -18,19 +19,31 @@ export const FoodListSection = () => {
                 title="Create new food"
                 description={`Total: ${foodListItems.length} foods.`}
             >
-                <Button>Add</Button>
+                <Button onPress={() => navigation.push('ManageListFood', { type: 'add' })}>Add</Button>
             </Tile>
-            {foodListItems.map(({ id, name, energy, portion }) => (
+            {foodListItems.map((foodListItem) => (
                 <Tile
-                    key={id}
+                    key={foodListItem.id}
                     backgroundColor={themeConstant.colors.firstGray}
-                    title={name}
-                    description={`${energy} kcal/100 g - ${portion} g/1 portion`}
+                    title={foodListItem.name}
+                    description={`${foodListItem.energy} kcal/100 g - ${foodListItem.portionSize} g/1 portion`}
                     colorScheme="dark"
                 >
                     <Group>
-                        <MaterialIcons name="edit" color={themeConstant.colors.secondGray} size={32} />
-                        <MaterialIcons name="delete" color={themeConstant.colors.secondGray} size={32} />
+                        <MaterialIcons
+                            name="edit"
+                            color={themeConstant.colors.secondGray}
+                            size={32}
+                            onPress={() =>
+                                navigation.push('ManageListFood', { type: 'edit', foodListItem: foodListItem })
+                            }
+                        />
+                        <MaterialIcons
+                            name="delete"
+                            color={themeConstant.colors.secondGray}
+                            size={32}
+                            onPress={() => dispatch(remove(foodListItem))}
+                        />
                     </Group>
                 </Tile>
             ))}

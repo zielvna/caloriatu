@@ -1,7 +1,7 @@
 import { themeConstant } from '../Theme';
-import { Section } from '../components/Section';
-import { Tile } from '../components/Tile';
 import { Button } from './Button';
+import { Section } from './Section';
+import { Tile } from './Tile';
 
 export const GoalSection = () => {
     return (

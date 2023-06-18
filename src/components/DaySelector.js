@@ -22,7 +22,7 @@ export const DaySelector = () => {
         for (let i = 0; i < 35; i++) {
             const thisDay = new Date();
             thisDay.setHours(0, 0, 0, 0);
-            thisDay.setDate(date.getDate() - date.getDay() - 13 + i);
+            thisDay.setDate(date.getDate() - (date.getDay() || 7) - 13 + i);
             weeks[Math.floor(i / 7)].push(thisDay);
         }
 

@@ -23,7 +23,7 @@ const months = [
     'December',
 ];
 
-export const Header = ({ scheme = 'normal', title, buttonText, buttonClick }) => {
+export const Header = ({ scheme = 'normal', title, buttonText, onButtonPress }) => {
     const selectedDate = useSelector((state) => state.selectedDate.value);
     const navigation = useNavigation();
     const index = useNavigationState(({ index }) => index);
@@ -47,7 +47,7 @@ export const Header = ({ scheme = 'normal', title, buttonText, buttonClick }) =>
                     <MiddleText>{title}</MiddleText>
                 </MiddleSide>
                 <RightSide>
-                    <TouchableWithoutFeedback onPress={buttonClick}>
+                    <TouchableWithoutFeedback onPress={onButtonPress}>
                         <RightText>{buttonText}</RightText>
                     </TouchableWithoutFeedback>
                 </RightSide>

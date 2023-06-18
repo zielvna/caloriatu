@@ -1,7 +1,7 @@
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { themeConstant } from '../Theme';
-import { Section } from '../components/Section';
-import { Tile } from '../components/Tile';
+import { Section } from './Section';
+import { Tile } from './Tile';
 
 export const FoodSection = () => {
     return (

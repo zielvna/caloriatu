@@ -14,6 +14,7 @@ export const themeConstant = {
         waterFullColor: '#74B9FF',
         waterEmptyColor: '#D3D3D3',
         goalColor: '#A29BFE',
+        errorColor: '#EB4D4B',
     },
     fonts: {
         regular: 'Nunito_400Regular',
