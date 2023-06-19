@@ -48,8 +48,8 @@ export const ManageFoodListFoodSection = forwardRef(({ food, action }, ref) => {
             validationSchema={foodValidationSchema}
             initialValues={{
                 name: food?.name,
-                energy: food?.energy.toString(),
-                portionSize: food?.portionSize.toString(),
+                energy: food?.energy?.toString(),
+                portionSize: food?.portionSize?.toString(),
             }}
             onSubmit={submit}
         >

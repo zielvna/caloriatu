@@ -15,12 +15,22 @@ export const MealSection = () => {
 
     const day = useSelector((state) => state.dayList.value.filter((day) => day.date === date)[0]);
 
+    const calculateCalories = () => {
+        let calories = 0;
+
+        day?.meals[meal].map((food) => {
+            calories += Math.floor((food.portionSize * food.portions * food.energy) / 100);
+        });
+
+        return calories;
+    };
+
     return (
         <>
             <Tile
                 backgroundColor={themeConstant.colors.primaryColor}
                 title="Add food"
-                description={`Total: ${0} kcal.`}
+                description={`Total: ${calculateCalories()} kcal.`}
             >
                 <Button onPress={() => navigation.push('FoodList', { action: 'add' })}>Add</Button>
             </Tile>

@@ -51,7 +51,7 @@ export const ManageMealFoodSection = forwardRef(({ food, action }, ref) => {
                 innerRef={ref}
                 validationSchema={foodValidationSchema}
                 initialValues={{
-                    portions: food?.portions.toString(),
+                    portions: food?.portions?.toString(),
                 }}
                 onSubmit={submit}
             >
