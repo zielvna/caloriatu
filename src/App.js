@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { Theme } from './Theme';
 import { FoodList } from './screens/FoodList';
 import { Home } from './screens/Home';
+import { LogWeight } from './screens/LogWeight';
 import { ManageFoodListFood } from './screens/ManageFoodListFood';
 import { ManageMealFood } from './screens/ManageMealFood';
 import { Meal } from './screens/Meal';
@@ -42,6 +43,7 @@ const App = () => {
                         <Screen name="Meal" component={Meal} />
                         <Screen name="ManageMealFood" component={ManageMealFood} />
                         <Screen name="Settings" component={Settings} />
+                        <Screen name="LogWeight" component={LogWeight} />
                     </Navigator>
                 </NavigationContainer>
             </Provider>

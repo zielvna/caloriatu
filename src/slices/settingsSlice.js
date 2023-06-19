@@ -19,12 +19,13 @@ export const settingsSlice = createSlice({
     reducers: {
         changeSettings: (state, action) => {
             state.value = action.payload;
-
-            console.log(action.payload);
+        },
+        changeCurrentWeight: (state, action) => {
+            state.value = { ...state.value, currentWeight: action.payload };
         },
     },
 });
 
-export const { changeSettings } = settingsSlice.actions;
+export const { changeSettings, changeCurrentWeight } = settingsSlice.actions;
 
 export default settingsSlice.reducer;
