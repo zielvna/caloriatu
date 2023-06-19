@@ -26,7 +26,12 @@ export const Menu = ({ active }) => {
                 onPress={() => navigate('FoodList')}
                 isActive={active === 'FoodList'}
             />
-            <MenuItem icon="settings" description="settings" />
+            <MenuItem
+                icon="settings"
+                description="settings"
+                onPress={() => navigate('Settings')}
+                isActive={active === 'Settings'}
+            />
         </Container>
     );
 };

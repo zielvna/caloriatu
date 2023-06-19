@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { configureStore } from '@reduxjs/toolkit';
-import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE, persistReducer, persistStore } from 'redux-persist';
+import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE, persistCombineReducers, persistStore } from 'redux-persist';
 import dayListReducer from '../slices/dayListSlice';
 import foodListReducer from '../slices/foodListSlice';
 import selectReducer from '../slices/selectSlice';
@@ -10,11 +10,14 @@ const persistConfig = {
     storage: AsyncStorage,
 };
 
-const persistedFoodListReducer = persistReducer(persistConfig, foodListReducer);
-const persistedDayListReducer = persistReducer(persistConfig, dayListReducer);
+const persistedReducers = persistCombineReducers(persistConfig, {
+    select: selectReducer,
+    foodList: foodListReducer,
+    dayList: dayListReducer,
+});
 
 export const store = configureStore({
-    reducer: { select: selectReducer, foodList: persistedFoodListReducer, dayList: persistedDayListReducer },
+    reducer: persistedReducers,
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: {

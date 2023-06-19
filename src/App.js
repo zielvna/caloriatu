@@ -9,6 +9,7 @@ import { Home } from './screens/Home';
 import { ManageFoodListFood } from './screens/ManageFoodListFood';
 import { ManageMealFood } from './screens/ManageMealFood';
 import { Meal } from './screens/Meal';
+import { Settings } from './screens/Settings';
 import { store } from './store';
 
 const { Navigator, Screen } = createNativeStackNavigator();
@@ -38,6 +39,7 @@ const App = () => {
                         <Screen name="ManageFoodListFood" component={ManageFoodListFood} />
                         <Screen name="Meal" component={Meal} />
                         <Screen name="ManageMealFood" component={ManageMealFood} />
+                        <Screen name="Settings" component={Settings} />
                     </Navigator>
                 </NavigationContainer>
             </Provider>

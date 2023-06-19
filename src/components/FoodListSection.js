@@ -16,7 +16,7 @@ export const FoodListSection = ({ action }) => {
         <>
             <Tile
                 backgroundColor={themeConstant.colors.primaryColor}
-                title="Create new food"
+                title="Add new food"
                 description={`Total: ${foodList.length} foods.`}
             >
                 <Button onPress={() => navigation.push('ManageFoodListFood', { action: 'add' })}>Add</Button>
