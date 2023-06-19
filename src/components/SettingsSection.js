@@ -41,6 +41,7 @@ export const SettingsSection = forwardRef((props, ref) => {
 
     const submit = (values) => {
         const newValues = {
+            isProfileCompleted: true,
             gender: values.gender,
             age: +values.age,
             height: +values.height,
@@ -59,13 +60,13 @@ export const SettingsSection = forwardRef((props, ref) => {
             innerRef={ref}
             validationSchema={settingsValidationSchema}
             initialValues={{
-                gender: settings.gender ?? 0,
-                age: settings.age.toString() ?? '',
-                height: settings.height.toString() ?? '',
-                currentWeight: settings.currentWeight.toString() ?? '',
-                goalWeight: settings.goalWeight.toString() ?? '',
-                weeklyWeightLoseGoal: settings.weeklyWeightLoseGoal.toString() ?? '',
-                activity: settings.activity ?? 0,
+                gender: settings?.gender ?? 0,
+                age: settings?.age?.toString() ?? '',
+                height: settings?.height?.toString() ?? '',
+                currentWeight: settings?.currentWeight?.toString() ?? '',
+                goalWeight: settings?.goalWeight?.toString() ?? '',
+                weeklyWeightLoseGoal: settings?.weeklyWeightLoseGoal?.toString() ?? '',
+                activity: settings?.activity ?? 0,
             }}
             onSubmit={submit}
         >

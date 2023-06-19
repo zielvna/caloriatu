@@ -93,8 +93,8 @@ export const Header = ({ scheme = 'normal', title, buttonText, onButtonPress }) 
 const Container = styled.View`
     background-color: ${(props) =>
         props.scheme === 'start' ? props.theme.colors.primaryColor : props.theme.colors.backgroundColor};
-    margin: ${Constants.statusBarHeight}px 0 6px 0;
-    padding: ${(props) => (props.scheme === 'normal' ? '0 12px 0 0' : '0 12px')};
+    margin: ${Constants.statusBarHeight}px 0 0 0;
+    padding: ${(props) => (props.scheme === 'normal' ? '0 12px 6px 0' : '0 12px 6px 12px')};
 `;
 
 const Main = styled.View`

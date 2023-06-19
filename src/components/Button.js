@@ -15,9 +15,11 @@ const Container = styled.View`
     background-color: ${(props) => props.theme.colors.backgroundColor};
     padding: 8px 16px;
     border-radius: 12px;
+    width: 100%;
 `;
 
 const Description = styled.Text`
     font-family: ${(props) => props.theme.fonts.bold};
     color: ${(props) => props.theme.colors.contrastColor};
+    text-align: center;
 `;

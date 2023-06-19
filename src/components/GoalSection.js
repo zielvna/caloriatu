@@ -1,3 +1,4 @@
+import styled from 'styled-components/native';
 import { themeConstant } from '../Theme';
 import { Button } from './Button';
 import { Section } from './Section';
@@ -12,8 +13,14 @@ export const GoalSection = () => {
                 description="03 Aug 2023"
                 isHorizontal={false}
             >
-                <Button>Log current weight</Button>
+                <ButtonContainer>
+                    <Button>Log current weight</Button>
+                </ButtonContainer>
             </Tile>
         </Section>
     );
 };
+
+const ButtonContainer = styled.View`
+    width: 192px;
+`;

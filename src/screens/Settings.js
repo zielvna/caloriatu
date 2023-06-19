@@ -5,7 +5,7 @@ import { Menu } from '../components/Menu';
 import { Screen } from '../components/Screen';
 import { SettingsSection } from '../components/SettingsSection';
 
-export const Settings = () => {
+export const Settings = ({ route }) => {
     const formikRef = useRef();
 
     const submitForm = () => {
@@ -18,7 +18,7 @@ export const Settings = () => {
             <Body>
                 <SettingsSection ref={formikRef} />
             </Body>
-            <Menu active="Settings" />
+            {!route?.params?.hideMenu && <Menu active="Settings" />}
         </Screen>
     );
 };

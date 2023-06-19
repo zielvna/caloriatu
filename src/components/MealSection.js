@@ -31,7 +31,9 @@ export const MealSection = () => {
                 title="Add food"
                 description={`Total: ${calculateCalories()} kcal.`}
             >
-                <Button onPress={() => navigation.push('FoodList', { action: 'add' })}>Add</Button>
+                <ButtonContainer>
+                    <Button onPress={() => navigation.push('FoodList', { action: 'add' })}>Add</Button>
+                </ButtonContainer>
             </Tile>
             {day?.meals[meal].map((food) => (
                 <Tile
@@ -65,4 +67,8 @@ export const MealSection = () => {
 
 const Group = styled.View`
     flex-direction: row;
+`;
+
+const ButtonContainer = styled.View`
+    width: 72px;
 `;

@@ -19,7 +19,9 @@ export const FoodListSection = ({ action }) => {
                 title="Add new food"
                 description={`Total: ${foodList.length} foods.`}
             >
-                <Button onPress={() => navigation.push('ManageFoodListFood', { action: 'add' })}>Add</Button>
+                <ButtonContainer>
+                    <Button onPress={() => navigation.push('ManageFoodListFood', { action: 'add' })}>Add</Button>
+                </ButtonContainer>
             </Tile>
             {foodList.map((food) => (
                 <Tile
@@ -62,4 +64,8 @@ export const FoodListSection = ({ action }) => {
 
 const Group = styled.View`
     flex-direction: row;
+`;
+
+const ButtonContainer = styled.View`
+    width: 72px;
 `;
