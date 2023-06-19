@@ -8,7 +8,7 @@ export const dayListSlice = createSlice({
     name: 'dayList',
     initialState,
     reducers: {
-        add: (state, action) => {
+        addFood: (state, action) => {
             const { date, meal, food } = action.payload;
             let found = false;
 
@@ -31,20 +31,18 @@ export const dayListSlice = createSlice({
                         dinner: [],
                         snack: [],
                     },
+                    water: 0,
                 };
 
                 newDay.meals[meal].push(food);
 
                 state.value = [...state.value, newDay];
-
-                console.log(state.value);
             }
         },
-        update: (state, action) => {
+        editFood: (state, action) => {
             const { date, meal, food } = action.payload;
 
             state.value = state.value.map((day) => {
-                console.log(day, date, meal);
                 if (day.date === date) {
                     day.meals[meal] = day.meals[meal].map((oldFood) => {
                         if (oldFood.id === food.id) {
@@ -58,10 +56,8 @@ export const dayListSlice = createSlice({
                     return day;
                 }
             });
-
-            console.log(state.value);
         },
-        remove: (state, action) => {
+        removeFood: (state, action) => {
             const { date, meal, food } = action.payload;
 
             state.value = state.value.map((day) => {
@@ -72,12 +68,41 @@ export const dayListSlice = createSlice({
                     return day;
                 }
             });
+        },
+        setWater: (state, action) => {
+            const { date, water } = action.payload;
+            found = false;
 
-            console.log(state.value);
+            state.value = state.value.map((day) => {
+                if (day.date === date) {
+                    found = true;
+                    day.water = water;
+                    return day;
+                } else {
+                    return day;
+                }
+            });
+
+            if (!found) {
+                const newDay = {
+                    date: date,
+                    meals: {
+                        breakfast: [],
+                        lunch: [],
+                        dinner: [],
+                        snack: [],
+                    },
+                    water: 0,
+                };
+
+                newDay.water = water;
+
+                state.value = [...state.value, newDay];
+            }
         },
     },
 });
 
-export const { add, update, remove } = dayListSlice.actions;
+export const { addFood, editFood, removeFood, setWater } = dayListSlice.actions;
 
 export default dayListSlice.reducer;

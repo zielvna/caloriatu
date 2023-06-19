@@ -11,7 +11,7 @@ export const foodListSlice = createSlice({
         add: (state, action) => {
             state.value = [...state.value, action.payload];
         },
-        update: (state, action) => {
+        edit: (state, action) => {
             state.value = state.value.map((food) => {
                 if (food.id === action.payload.id) {
                     return action.payload;
@@ -26,6 +26,6 @@ export const foodListSlice = createSlice({
     },
 });
 
-export const { add, update, remove } = foodListSlice.actions;
+export const { add, edit, remove } = foodListSlice.actions;
 
 export default foodListSlice.reducer;

@@ -4,7 +4,7 @@ import { forwardRef } from 'react';
 import uuid from 'react-native-uuid';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
-import { add, update } from '../slices/foodListSlice';
+import { add, edit } from '../slices/foodListSlice';
 import { Field } from './Field';
 
 const foodValidationSchema = Yup.object().shape({
@@ -36,7 +36,7 @@ export const ManageFoodListFoodSection = forwardRef(({ food, action }, ref) => {
         if (action === 'add') {
             dispatch(add(newFood));
         } else {
-            dispatch(update(newFood));
+            dispatch(edit(newFood));
         }
 
         navigation.goBack();

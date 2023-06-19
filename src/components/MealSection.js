@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components/native';
 import { themeConstant } from '../Theme';
-import { remove } from '../slices/dayListSlice';
+import { removeFood } from '../slices/dayListSlice';
 import { Button } from './Button';
 import { Tile } from './Tile';
 
@@ -54,7 +54,7 @@ export const MealSection = () => {
                             name="delete"
                             color={themeConstant.colors.secondGray}
                             size={32}
-                            onPress={() => dispatch(remove({ date, meal, food }))}
+                            onPress={() => dispatch(removeFood({ date, meal, food }))}
                         />
                     </Group>
                 </Tile>

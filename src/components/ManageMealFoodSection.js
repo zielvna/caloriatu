@@ -5,7 +5,7 @@ import uuid from 'react-native-uuid';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { themeConstant } from '../Theme';
-import { add, update } from '../slices/dayListSlice';
+import { addFood, editFood } from '../slices/dayListSlice';
 import { Field } from './Field';
 import { Tile } from './Tile';
 
@@ -32,9 +32,9 @@ export const ManageMealFoodSection = forwardRef(({ food, action }, ref) => {
         };
 
         if (action === 'add') {
-            dispatch(add({ date, meal, food: newFood }));
+            dispatch(addFood({ date, meal, food: newFood }));
         } else {
-            dispatch(update({ date, meal, food: newFood }));
+            dispatch(editFood({ date, meal, food: newFood }));
         }
 
         navigation.navigate('Meal');
