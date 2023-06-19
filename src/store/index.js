@@ -4,6 +4,7 @@ import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE, persistCombineReduce
 import dayListReducer from '../slices/dayListSlice';
 import foodListReducer from '../slices/foodListSlice';
 import selectReducer from '../slices/selectSlice';
+import settingsReducer from '../slices/settingsSlice';
 
 const persistConfig = {
     key: 'root',
@@ -14,6 +15,7 @@ const persistedReducers = persistCombineReducers(persistConfig, {
     select: selectReducer,
     foodList: foodListReducer,
     dayList: dayListReducer,
+    settings: settingsReducer,
 });
 
 export const store = configureStore({

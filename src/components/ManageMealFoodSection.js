@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { themeConstant } from '../Theme';
 import { addFood, editFood } from '../slices/dayListSlice';
-import { Field } from './Field';
+import { Input } from './Input';
 import { Tile } from './Tile';
 
 const foodValidationSchema = Yup.object().shape({
@@ -56,7 +56,7 @@ export const ManageMealFoodSection = forwardRef(({ food, action }, ref) => {
                 onSubmit={submit}
             >
                 {({ handleChange, handleBlur, values, errors }) => (
-                    <Field
+                    <Input
                         description="Portions"
                         error={errors.portions}
                         onChangeText={handleChange('portions')}

@@ -5,7 +5,7 @@ import uuid from 'react-native-uuid';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { add, edit } from '../slices/foodListSlice';
-import { Field } from './Field';
+import { Input } from './Input';
 
 const foodValidationSchema = Yup.object().shape({
     name: Yup.string().required('This field is required.'),
@@ -55,14 +55,14 @@ export const ManageFoodListFoodSection = forwardRef(({ food, action }, ref) => {
         >
             {({ handleChange, handleBlur, values, errors }) => (
                 <>
-                    <Field
+                    <Input
                         description="Name"
                         error={errors.name}
                         onChangeText={handleChange('name')}
                         onBlur={handleBlur('name')}
                         value={values.name}
                     />
-                    <Field
+                    <Input
                         description="Energy"
                         unit="kcal/100 g"
                         error={errors.energy}
@@ -71,7 +71,7 @@ export const ManageFoodListFoodSection = forwardRef(({ food, action }, ref) => {
                         value={values.energy}
                         inputMode="numeric"
                     />
-                    <Field
+                    <Input
                         description="Portion size"
                         unit="g"
                         error={errors.portionSize}

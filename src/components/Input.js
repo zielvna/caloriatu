@@ -1,17 +1,15 @@
 import { styled } from 'styled-components/native';
 
-export const Field = ({ description, unit, error, ...props }) => {
-    return (
-        <Container>
-            <Group>
-                <Description>{`${description}:`}</Description>
-                <Input {...props} />
-                {unit && <Unit>{unit}</Unit>}
-            </Group>
-            {error && <Error>{error}</Error>}
-        </Container>
-    );
-};
+export const Input = ({ description, unit, error, ...props }) => (
+    <Container>
+        <Group>
+            <Description>{`${description}:`}</Description>
+            <TextInput {...props} />
+            {unit && <Unit>{unit}</Unit>}
+        </Group>
+        {error && <Error>{error}</Error>}
+    </Container>
+);
 
 const Container = styled.View`
     margin: 0 0 12px 0;
@@ -22,7 +20,7 @@ const Group = styled.View`
     align-items: center;
 `;
 
-const Input = styled.TextInput`
+const TextInput = styled.TextInput`
     background-color: ${(props) => props.theme.colors.firstGray};
     padding: 4px;
     flex-grow: 1;
