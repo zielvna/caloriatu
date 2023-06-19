@@ -4,9 +4,11 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { registerRootComponent } from 'expo';
 import { Provider } from 'react-redux';
 import { Theme } from './Theme';
-import { FoodListScreen } from './screens/FoodList';
-import { HomeScreen } from './screens/Home';
-import { ManageFoodListItem } from './screens/ManageFoodListItem';
+import { FoodList } from './screens/FoodList';
+import { Home } from './screens/Home';
+import { ManageFoodListFood } from './screens/ManageFoodListFood';
+import { ManageMealFood } from './screens/ManageMealFood';
+import { Meal } from './screens/Meal';
 import { store } from './store';
 
 const { Navigator, Screen } = createNativeStackNavigator();
@@ -31,9 +33,11 @@ const App = () => {
                             headerShown: false,
                         }}
                     >
-                        <Screen name="Home" component={HomeScreen} />
-                        <Screen name="FoodList" component={FoodListScreen} />
-                        <Screen name="ManageListFood" component={ManageFoodListItem} />
+                        <Screen name="Home" component={Home} />
+                        <Screen name="FoodList" component={FoodList} />
+                        <Screen name="ManageFoodListFood" component={ManageFoodListFood} />
+                        <Screen name="Meal" component={Meal} />
+                        <Screen name="ManageMealFood" component={ManageMealFood} />
                     </Navigator>
                 </NavigationContainer>
             </Provider>

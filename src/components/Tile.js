@@ -1,14 +1,25 @@
+import { TouchableWithoutFeedback } from 'react-native';
 import styled from 'styled-components/native';
 
-export const Tile = ({ backgroundColor, colorScheme = 'light', title, description, isHorizontal = true, children }) => {
+export const Tile = ({
+    backgroundColor,
+    colorScheme = 'light',
+    title,
+    description,
+    isHorizontal = true,
+    onPress,
+    children,
+}) => {
     return (
-        <Container backgroundColor={backgroundColor} isHorizontal={isHorizontal}>
-            <LeftSide isHorizontal={isHorizontal}>
-                <Title colorScheme={colorScheme}>{title}</Title>
-                <Description colorScheme={colorScheme}>{description}</Description>
-            </LeftSide>
-            {children}
-        </Container>
+        <TouchableWithoutFeedback onPress={onPress}>
+            <Container backgroundColor={backgroundColor} isHorizontal={isHorizontal}>
+                <LeftSide isHorizontal={isHorizontal}>
+                    <Title colorScheme={colorScheme}>{title}</Title>
+                    <Description colorScheme={colorScheme}>{description}</Description>
+                </LeftSide>
+                {children}
+            </Container>
+        </TouchableWithoutFeedback>
     );
 };
 

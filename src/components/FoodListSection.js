@@ -7,43 +7,52 @@ import { remove } from '../slices/foodListSlice';
 import { Button } from './Button';
 import { Tile } from './Tile';
 
-export const FoodListSection = () => {
+export const FoodListSection = ({ action }) => {
     const dispatch = useDispatch();
     const navigation = useNavigation();
-    const foodListItems = useSelector((state) => state.foodList.value);
+    const foodList = useSelector((state) => state.foodList.value);
 
     return (
         <>
             <Tile
                 backgroundColor={themeConstant.colors.primaryColor}
                 title="Create new food"
-                description={`Total: ${foodListItems.length} foods.`}
+                description={`Total: ${foodList.length} foods.`}
             >
-                <Button onPress={() => navigation.push('ManageListFood', { type: 'add' })}>Add</Button>
+                <Button onPress={() => navigation.push('ManageFoodListFood', { action: 'add' })}>Add</Button>
             </Tile>
-            {foodListItems.map((foodListItem) => (
+            {foodList.map((food) => (
                 <Tile
-                    key={foodListItem.id}
+                    key={food.id}
                     backgroundColor={themeConstant.colors.firstGray}
-                    title={foodListItem.name}
-                    description={`${foodListItem.energy} kcal/100 g - ${foodListItem.portionSize} g/1 portion`}
+                    title={food.name}
+                    description={`${food.energy} kcal/100 g - ${food.portionSize} g/1 portion`}
                     colorScheme="dark"
                 >
                     <Group>
-                        <MaterialIcons
-                            name="edit"
-                            color={themeConstant.colors.secondGray}
-                            size={32}
-                            onPress={() =>
-                                navigation.push('ManageListFood', { type: 'edit', foodListItem: foodListItem })
-                            }
-                        />
-                        <MaterialIcons
-                            name="delete"
-                            color={themeConstant.colors.secondGray}
-                            size={32}
-                            onPress={() => dispatch(remove(foodListItem))}
-                        />
+                        {action === 'add' ? (
+                            <MaterialIcons
+                                name="add"
+                                color={themeConstant.colors.secondGray}
+                                size={32}
+                                onPress={() => navigation.push('ManageMealFood', { action: 'add', food })}
+                            />
+                        ) : (
+                            <>
+                                <MaterialIcons
+                                    name="edit"
+                                    color={themeConstant.colors.secondGray}
+                                    size={32}
+                                    onPress={() => navigation.push('ManageFoodListFood', { action: 'edit', food })}
+                                />
+                                <MaterialIcons
+                                    name="delete"
+                                    color={themeConstant.colors.secondGray}
+                                    size={32}
+                                    onPress={() => dispatch(remove(food))}
+                                />
+                            </>
+                        )}
                     </Group>
                 </Tile>
             ))}

@@ -24,7 +24,7 @@ const months = [
 ];
 
 export const Header = ({ scheme = 'normal', title, buttonText, onButtonPress }) => {
-    const selectedDate = useSelector((state) => state.selectedDate.value);
+    const selectedDate = useSelector((state) => state.select.value.date);
     const navigation = useNavigation();
     const index = useNavigationState(({ index }) => index);
 

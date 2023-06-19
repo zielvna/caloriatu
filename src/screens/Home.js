@@ -6,7 +6,7 @@ import { Menu } from '../components/Menu';
 import { Screen } from '../components/Screen';
 import { WaterSection } from '../components/WaterSection';
 
-export const HomeScreen = () => (
+export const Home = () => (
     <Screen>
         <Header scheme="home" />
         <Body>

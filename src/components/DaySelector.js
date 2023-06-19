@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Dimensions } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components/native';
-import { change } from '../slices/selectedDateSlice';
+import { changeDate } from '../slices/selectSlice';
 import { Day } from './Day';
 
 const windowWidth = Dimensions.get('window').width - 24;
@@ -10,7 +10,7 @@ const windowWidth = Dimensions.get('window').width - 24;
 export const DaySelector = () => {
     const [rows, setRows] = useState([]);
     const daySelectorRef = useRef();
-    const selectedDate = useSelector((state) => state.selectedDate.value);
+    const selectedDate = useSelector((state) => state.select.value.date);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -27,7 +27,7 @@ export const DaySelector = () => {
         }
 
         setRows(weeks);
-        dispatch(change(date.getTime()));
+        dispatch(changeDate(date.getTime()));
 
         daySelectorRef.current?.scrollTo({
             x: windowWidth * 2,
@@ -44,7 +44,7 @@ export const DaySelector = () => {
                             key={index}
                             date={date}
                             selected={date.getTime() === new Date(selectedDate).getTime()}
-                            onPress={() => dispatch(change(date.getTime()))}
+                            onPress={() => dispatch(changeDate(date.getTime()))}
                         />
                     ))}
                 </Week>

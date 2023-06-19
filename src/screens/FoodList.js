@@ -4,11 +4,11 @@ import { Header } from '../components/Header';
 import { Menu } from '../components/Menu';
 import { Screen } from '../components/Screen';
 
-export const FoodListScreen = () => (
+export const FoodList = ({ route }) => (
     <Screen>
         <Header scheme="normal" title="Food List" />
         <Body>
-            <FoodListSection />
+            <FoodListSection action={route.params?.action} />
         </Body>
         <Menu active="FoodList" />
     </Screen>
