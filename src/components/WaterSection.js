@@ -9,11 +9,11 @@ import { Section } from './Section';
 export const WaterSection = () => {
     const [lastClick, setLastClick] = useState();
     const dispatch = useDispatch();
-
     const { date } = useSelector((state) => state.select.value);
     const day = useSelector((state) => state.dayList.value.filter((day) => day.date === date)[0]);
+    const settings = useSelector((state) => state.settings.value);
 
-    const targetWaterConsumption = 2000;
+    const targetWaterConsumption = settings.currentWeight * 33;
 
     const waterGlassClick = (i) => {
         let water = i;
