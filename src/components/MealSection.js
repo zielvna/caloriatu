@@ -12,7 +12,6 @@ export const MealSection = () => {
     const navigation = useNavigation();
 
     const { date, meal } = useSelector((state) => state.select.value);
-
     const day = useSelector((state) => state.dayList.value.filter((day) => day.date === date)[0]);
 
     const calculateCalories = () => {
