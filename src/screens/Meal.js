@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { Body } from '../components/Body';
 import { Header } from '../components/Header';
 import { MealSection } from '../components/MealSection';
+import { Menu } from '../components/Menu';
 import { Screen } from '../components/Screen';
 
 export const Meal = () => {
@@ -13,6 +14,7 @@ export const Meal = () => {
             <Body>
                 <MealSection />
             </Body>
+            <Menu />
         </Screen>
     );
 };

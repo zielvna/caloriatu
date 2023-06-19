@@ -5,18 +5,25 @@ import { MenuItem } from './MenuItem';
 export const Menu = ({ active }) => {
     const navigation = useNavigation();
 
+    const navigate = (screen) => {
+        navigation.reset({
+            index: 0,
+            routes: [{ name: screen }],
+        });
+    };
+
     return (
         <Container>
             <MenuItem
                 icon="restaurant"
                 description="menu"
-                onPress={() => navigation.navigate('Home')}
+                onPress={() => navigate('Home')}
                 isActive={active === 'Home'}
             />
             <MenuItem
                 icon="menu-book"
                 description="food list"
-                onPress={() => navigation.navigate('FoodList')}
+                onPress={() => navigate('FoodList')}
                 isActive={active === 'FoodList'}
             />
             <MenuItem icon="settings" description="settings" />

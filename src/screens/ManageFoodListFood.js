@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { Body } from '../components/Body';
 import { Header } from '../components/Header';
 import { ManageFoodListFoodSection } from '../components/ManageFoodListFoodSection';
+import { Menu } from '../components/Menu';
 import { Screen } from '../components/Screen';
 
 export const ManageFoodListFood = ({ route }) => {
@@ -22,6 +23,7 @@ export const ManageFoodListFood = ({ route }) => {
             <Body>
                 <ManageFoodListFoodSection food={route.params.food} action={route.params.action} ref={formikRef} />
             </Body>
+            <Menu />
         </Screen>
     );
 };
