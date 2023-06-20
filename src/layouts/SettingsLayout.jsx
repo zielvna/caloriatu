@@ -3,9 +3,9 @@ import { Formik } from 'formik';
 import { forwardRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
+import { Input } from '../components/Input';
+import { Radio } from '../components/Radio';
 import { changeSettings } from '../slices/settingsSlice';
-import { Input } from './Input';
-import { Radio } from './Radio';
 
 const settingsValidationSchema = Yup.object().shape({
     gender: Yup.number(),
@@ -34,7 +34,7 @@ const settingsValidationSchema = Yup.object().shape({
     activity: Yup.number(),
 });
 
-export const SettingsSection = forwardRef((props, ref) => {
+export const SettingsLayout = forwardRef((props, ref) => {
     const navigation = useNavigation();
     const dispatch = useDispatch();
     const settings = useSelector((state) => state.settings.value);

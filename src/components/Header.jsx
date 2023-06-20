@@ -5,7 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import { TouchableWithoutFeedback } from 'react-native';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components/native';
-import { themeConstant } from '../Theme';
+import { themeConstant } from '../contexts/ThemeContext';
 import { DaySelector } from './DaySelector';
 
 const months = [

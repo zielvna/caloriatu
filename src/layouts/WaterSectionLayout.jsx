@@ -2,11 +2,11 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components/native';
-import { themeConstant } from '../Theme';
+import { Section } from '../components/Section';
+import { themeConstant } from '../contexts/ThemeContext';
 import { setWater } from '../slices/dayListSlice';
-import { Section } from './Section';
 
-export const WaterSection = () => {
+export const WaterSectionLayout = () => {
     const [lastClick, setLastClick] = useState();
     const dispatch = useDispatch();
     const { date } = useSelector((state) => state.select.value);

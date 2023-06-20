@@ -1,4 +1,4 @@
-import { ThemeProvider } from 'styled-components/native';
+import { ThemeProvider as StyledComponentsThemeProvider } from 'styled-components/native';
 
 export const themeConstant = {
     colors: {
@@ -22,4 +22,6 @@ export const themeConstant = {
     },
 };
 
-export const Theme = ({ children }) => <ThemeProvider theme={themeConstant}>{children}</ThemeProvider>;
+export const ThemeProvider = ({ children }) => (
+    <StyledComponentsThemeProvider theme={themeConstant}>{children}</StyledComponentsThemeProvider>
+);

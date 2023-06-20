@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
-import { Body } from '../components/Body';
 import { Header } from '../components/Header';
-import { MealSection } from '../components/MealSection';
 import { Menu } from '../components/Menu';
 import { Screen } from '../components/Screen';
+import { Wrapper } from '../components/Wrapper';
+import { MealLayout } from '../layouts/MealLayout';
 
 export const Meal = () => {
     const meal = useSelector((state) => state.select.value.meal);
@@ -11,9 +11,9 @@ export const Meal = () => {
     return (
         <Screen>
             <Header scheme="normal" title={meal.replace(/^./, meal[0].toUpperCase())} />
-            <Body>
-                <MealSection />
-            </Body>
+            <Wrapper>
+                <MealLayout />
+            </Wrapper>
             <Menu />
         </Screen>
     );

@@ -6,10 +6,10 @@ module.exports = {
         slug: 'caloriatu',
         version: '1.0.0',
         orientation: 'portrait',
-        icon: './assets/icon.png',
+        icon: './src/assets/icon.png',
         userInterfaceStyle: 'light',
         splash: {
-            image: './assets/splash.png',
+            image: './src/assets/splash.png',
             resizeMode: 'contain',
             backgroundColor: '#ffffff',
         },
@@ -20,7 +20,7 @@ module.exports = {
         },
         android: {
             adaptiveIcon: {
-                foregroundImage: './assets/adaptive-icon.png',
+                foregroundImage: './src/assets/adaptive-icon.png',
                 backgroundColor: '#ffffff',
             },
             package: 'com.zielvna.caloriatu',

@@ -1,9 +1,9 @@
 import { useRef } from 'react';
-import { Body } from '../components/Body';
 import { Header } from '../components/Header';
-import { LogWeightSection } from '../components/LogWeightSection';
 import { Menu } from '../components/Menu';
 import { Screen } from '../components/Screen';
+import { Wrapper } from '../components/Wrapper';
+import { LogWeightLayout } from '../layouts/LogWeightLayout';
 
 export const LogWeight = () => {
     const formikRef = useRef();
@@ -15,9 +15,9 @@ export const LogWeight = () => {
     return (
         <Screen>
             <Header scheme="normal" title="Log current weight" buttonText="Save" onButtonPress={submitForm} />
-            <Body>
-                <LogWeightSection ref={formikRef} />
-            </Body>
+            <Wrapper>
+                <LogWeightLayout ref={formikRef} />
+            </Wrapper>
             <Menu />
         </Screen>
     );

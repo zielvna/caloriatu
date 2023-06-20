@@ -1,10 +1,10 @@
 import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components/native';
-import { themeConstant } from '../Theme';
-import { Button } from './Button';
-import { Section } from './Section';
-import { Tile } from './Tile';
+import { Button } from '../components/Button';
+import { Section } from '../components/Section';
+import { Tile } from '../components/Tile';
+import { themeConstant } from '../contexts/ThemeContext';
 
 const months = [
     'January',
@@ -21,7 +21,7 @@ const months = [
     'December',
 ];
 
-export const GoalSection = () => {
+export const GoalSectionLayout = () => {
     const navigation = useNavigation();
     const settings = useSelector((state) => state.settings.value);
 

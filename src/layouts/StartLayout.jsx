@@ -1,8 +1,8 @@
 import { useNavigation } from '@react-navigation/native';
 import { styled } from 'styled-components/native';
-import { Button } from './Button';
+import { Button } from '../components/Button';
 
-export const StartSection = () => {
+export const StartLayout = () => {
     const navigation = useNavigation();
 
     return (

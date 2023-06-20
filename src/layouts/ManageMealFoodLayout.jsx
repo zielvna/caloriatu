@@ -4,10 +4,10 @@ import { forwardRef } from 'react';
 import uuid from 'react-native-uuid';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
-import { themeConstant } from '../Theme';
+import { Input } from '../components/Input';
+import { Tile } from '../components/Tile';
+import { themeConstant } from '../contexts/ThemeContext';
 import { addFood, editFood } from '../slices/dayListSlice';
-import { Input } from './Input';
-import { Tile } from './Tile';
 
 const foodValidationSchema = Yup.object().shape({
     portions: Yup.number()
@@ -17,7 +17,7 @@ const foodValidationSchema = Yup.object().shape({
         .required('This field is required.'),
 });
 
-export const ManageMealFoodSection = forwardRef(({ food, action }, ref) => {
+export const ManageMealFoodLayout = forwardRef(({ food, action }, ref) => {
     const dispatch = useDispatch();
     const navigation = useNavigation();
     const { date, meal } = useSelector((state) => state.select.value);

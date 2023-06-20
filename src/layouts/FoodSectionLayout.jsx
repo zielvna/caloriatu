@@ -1,12 +1,12 @@
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
-import { themeConstant } from '../Theme';
+import { Section } from '../components/Section';
+import { Tile } from '../components/Tile';
+import { themeConstant } from '../contexts/ThemeContext';
 import { changeMeal } from '../slices/selectSlice';
-import { Section } from './Section';
-import { Tile } from './Tile';
 
-export const FoodSection = () => {
+export const FoodSectionLayout = () => {
     const dispatch = useDispatch();
     const navigation = useNavigation();
     const { date } = useSelector((state) => state.select.value);

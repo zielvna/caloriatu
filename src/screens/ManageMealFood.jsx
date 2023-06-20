@@ -1,11 +1,11 @@
 import { useRef } from 'react';
-import { Body } from '../components/Body';
 import { Header } from '../components/Header';
-import { ManageFoodListFoodSection } from '../components/ManageFoodListFoodSection';
 import { Menu } from '../components/Menu';
 import { Screen } from '../components/Screen';
+import { Wrapper } from '../components/Wrapper';
+import { ManageMealFoodLayout } from '../layouts/ManageMealFoodLayout';
 
-export const ManageFoodListFood = ({ route }) => {
+export const ManageMealFood = ({ route }) => {
     const formikRef = useRef();
 
     const submitForm = () => {
@@ -16,13 +16,13 @@ export const ManageFoodListFood = ({ route }) => {
         <Screen>
             <Header
                 scheme="normal"
-                title={`${route.params.action === 'add' ? 'Add' : 'Edit'} food list food`}
+                title={`${route.params.action === 'add' ? 'Add' : 'Edit'} meal food`}
                 buttonText="Save"
                 onButtonPress={submitForm}
             />
-            <Body>
-                <ManageFoodListFoodSection food={route.params.food} action={route.params.action} ref={formikRef} />
-            </Body>
+            <Wrapper>
+                <ManageMealFoodLayout food={route.params.food} action={route.params.action} ref={formikRef} />
+            </Wrapper>
             <Menu />
         </Screen>
     );

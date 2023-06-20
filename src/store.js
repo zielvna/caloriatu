@@ -1,10 +1,10 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { configureStore } from '@reduxjs/toolkit';
 import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE, persistCombineReducers, persistStore } from 'redux-persist';
-import dayListReducer from '../slices/dayListSlice';
-import foodListReducer from '../slices/foodListSlice';
-import selectReducer from '../slices/selectSlice';
-import settingsReducer from '../slices/settingsSlice';
+import dayListReducer from './slices/dayListSlice';
+import foodListReducer from './slices/foodListSlice';
+import selectReducer from './slices/selectSlice';
+import settingsReducer from './slices/settingsSlice';
 
 const persistConfig = {
     key: 'root',

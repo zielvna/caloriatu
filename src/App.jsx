@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { registerRootComponent } from 'expo';
 import { Provider } from 'react-redux';
-import { Theme } from './Theme';
+import { ThemeProvider } from './contexts/ThemeContext';
 import { FoodList } from './screens/FoodList';
 import { Home } from './screens/Home';
 import { LogWeight } from './screens/LogWeight';
@@ -27,10 +27,11 @@ const App = () => {
     }
 
     return (
-        <Theme>
+        <ThemeProvider>
             <Provider store={store}>
                 <NavigationContainer>
                     <Navigator
+                        initialRouteName="Start"
                         screenOptions={{
                             animation: 'none',
                             headerShown: false,
@@ -47,7 +48,7 @@ const App = () => {
                     </Navigator>
                 </NavigationContainer>
             </Provider>
-        </Theme>
+        </ThemeProvider>
     );
 };
 

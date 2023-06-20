@@ -4,8 +4,8 @@ import { forwardRef } from 'react';
 import uuid from 'react-native-uuid';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
+import { Input } from '../components/Input';
 import { add, edit } from '../slices/foodListSlice';
-import { Input } from './Input';
 
 const foodValidationSchema = Yup.object().shape({
     name: Yup.string().required('This field is required.'),
@@ -21,7 +21,7 @@ const foodValidationSchema = Yup.object().shape({
         .required('This field is required.'),
 });
 
-export const ManageFoodListFoodSection = forwardRef(({ food, action }, ref) => {
+export const ManageFoodListFoodLayout = forwardRef(({ food, action }, ref) => {
     const dispatch = useDispatch();
     const navigation = useNavigation();
 

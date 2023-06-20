@@ -1,7 +1,7 @@
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { TouchableWithoutFeedback } from 'react-native';
 import styled from 'styled-components/native';
-import { themeConstant } from '../Theme';
+import { themeConstant } from '../contexts/ThemeContext';
 
 export const MenuItem = ({ icon, description, onPress, isActive = false }) => (
     <TouchableWithoutFeedback onPress={onPress}>

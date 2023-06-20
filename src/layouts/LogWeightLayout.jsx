@@ -3,8 +3,8 @@ import { Formik } from 'formik';
 import { forwardRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
+import { Input } from '../components/Input';
 import { changeCurrentWeight } from '../slices/settingsSlice';
-import { Input } from './Input';
 
 const currentWeightValidationSchema = Yup.object().shape({
     currentWeight: Yup.number()
@@ -13,7 +13,7 @@ const currentWeightValidationSchema = Yup.object().shape({
         .required('This field is required.'),
 });
 
-export const LogWeightSection = forwardRef((props, ref) => {
+export const LogWeightLayout = forwardRef((props, ref) => {
     const dispatch = useDispatch();
     const navigation = useNavigation();
 

@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Header } from '../components/Header';
 import { Screen } from '../components/Screen';
-import { StartSection } from '../components/StartSection';
+import { StartLayout } from '../layouts/StartLayout';
 
 export const Start = () => {
     const navigation = useNavigation();
@@ -18,7 +18,7 @@ export const Start = () => {
     return (
         <Screen>
             <Header scheme="start" />
-            <StartSection />
+            <StartLayout />
         </Screen>
     );
 };
