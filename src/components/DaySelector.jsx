@@ -1,53 +1,44 @@
 import { useEffect, useRef, useState } from 'react';
 import { Dimensions } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components/native';
-import { changeDate } from '../slices/selectSlice';
 import { Day } from './Day';
 
 const windowWidth = Dimensions.get('window').width - 24;
 
 export const DaySelector = () => {
-    const [rows, setRows] = useState([]);
-    const daySelectorRef = useRef();
+    const [days, setDays] = useState([]);
+    const containerRef = useRef(null);
     const selectedDate = useSelector((state) => state.select.value.date);
-    const dispatch = useDispatch();
 
     useEffect(() => {
         const date = new Date();
         date.setHours(0, 0, 0, 0);
 
-        const weeks = [[], [], [], [], []];
+        const days = [];
 
-        for (let i = 0; i < 35; i++) {
+        for (let i = 0; i < 14; i++) {
             const thisDay = new Date();
             thisDay.setHours(0, 0, 0, 0);
-            thisDay.setDate(date.getDate() - (date.getDay() || 7) - 13 + i);
-            weeks[Math.floor(i / 7)].push(thisDay);
+            thisDay.setDate(date.getDate() - 13 + i);
+            days.push(thisDay.getTime());
         }
 
-        setRows(weeks);
-        dispatch(changeDate(date.getTime()));
-
-        daySelectorRef.current?.scrollTo({
-            x: windowWidth * 2,
-            animated: false,
-        });
+        setDays(days);
     }, []);
 
+    const onLayout = () => {
+        const date = new Date();
+        date.setHours(0, 0, 0, 0);
+        const dayDifference = date - selectedDate;
+        const pixelsToScroll = (14 - dayDifference / 86400000 - 4) * Math.floor(windowWidth / 7);
+        containerRef.current.scrollTo({ y: pixelsToScroll });
+    };
+
     return (
-        <Container ref={daySelectorRef} horizontal disableIntervalMomentum snapToInterval={windowWidth}>
-            {rows.map((row, index) => (
-                <Week key={index}>
-                    {row.map((date, index) => (
-                        <Day
-                            key={index}
-                            date={date}
-                            selected={date.getTime() === new Date(selectedDate).getTime()}
-                            onPress={() => dispatch(changeDate(date.getTime()))}
-                        />
-                    ))}
-                </Week>
+        <Container ref={containerRef} showsHorizontalScrollIndicator={false} horizontal={true} onLayout={onLayout}>
+            {days.map((day) => (
+                <Day key={day} date={day} selected={selectedDate === day} />
             ))}
         </Container>
     );
@@ -56,9 +47,5 @@ export const DaySelector = () => {
 const Container = styled.ScrollView`
     background-color: ${(props) => props.theme.colors.backgroundColor};
     height: ${Math.floor(windowWidth / 7)}px;
-`;
-
-const Week = styled.View`
-    width: ${windowWidth}px;
     flex-direction: row;
 `;

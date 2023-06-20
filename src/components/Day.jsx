@@ -1,23 +1,29 @@
-import { TouchableWithoutFeedback } from 'react-native';
+import { memo } from 'react';
+import { Dimensions, TouchableWithoutFeedback } from 'react-native';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components/native';
+import { changeDate } from '../slices/selectSlice';
 
 const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const windowWidth = Dimensions.get('window').width - 24;
 
-export const Day = ({ date, selected, onPress }) => {
+export const Day = memo(({ date, selected }) => {
+    const dispatch = useDispatch();
+
     return (
-        <TouchableWithoutFeedback onPress={onPress}>
+        <TouchableWithoutFeedback onPress={() => dispatch(changeDate(date))}>
             <Container selected={selected}>
                 <Monthday selected={selected}>{new Date(date).getDate()}</Monthday>
                 <Weekday selected={selected}>{weekdays[new Date(date).getDay()]}</Weekday>
             </Container>
         </TouchableWithoutFeedback>
     );
-};
+});
 
 const Container = styled.View`
     ${(props) => props.selected && `background: ${props.theme.colors.primaryColor}`};
-    flex: 1;
-    border-radius: 50px;
+    width: ${Math.floor(windowWidth / 7)}px;
+    border-radius: 1000px;
     justify-content: center;
     align-items: center;
 `;
